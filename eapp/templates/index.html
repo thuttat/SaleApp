@@ -25,13 +25,14 @@
                 {% endfor %}
             </ul>
             <form class="d-flex" method="get" action="/">
-                <input class="form-control me-2" type="text" placeholder="Search">
+                <input class="form-control me-2" type="text" placeholder="Search" name ="kw">
                 <button class="btn btn-primary" type="submit">Search</button>
             </form>
         </div>
     </div>
 </nav>
 <section class="container">
+    {% if product %}
     <div class="row">
         {% for p in product %}
             <div class = "col-md-3 col-6">
@@ -47,9 +48,13 @@
             </div>
         {% endfor %}
     </div>
+    {% else %}
+    <div class="alert alert-warning mt-2">Khong co san pham nao</div>
+    {% endif %}
+
 </section>
 </body>
-<footer>
+<footer class="fixed-bottom bg-primary text-white">
     <div class="mt-4 p-5 bg-primary text-white rounded">
       <h1>e Commerce</h1>
       <p>HE</p>

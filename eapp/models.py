@@ -28,12 +28,12 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
 
-        # c1 = Category(name="Mobile")
-        # c2 = Category(name="Tablet")
-        # c3 = Category(name="Laptop")
-        #
-        # db.session.add_all([c1,c2,c3])
-        # db.session.commit()
+        c1 = Category(name="Mobile")
+        c2 = Category(name="Tablet")
+        c3 = Category(name="Laptop")
+
+        db.session.add_all([c1,c2,c3])
+        db.session.commit()
         product = [{
             "name": "iPhone 7 Plus",
             "description": "Apple, 32GB, RAM: 3GB, iOS13",
