@@ -1,0 +1,19 @@
+ {% if product %}
+    <div class="row">
+        {% for p in product %}
+            <div class = "col-md-3 col-6">
+                <div class="card">
+                  <img class="card-img-top" src="{{p.image}}" alt="{{p.name}}">
+                  <div class="card-body">
+                    <h4 class="card-title">{{p.name}}</h4>
+                    <p class="card-text">{{p.price}}</p>
+                    <a href="#" class="btn btn-primary">Xem chi tiết</a>
+                    <button class="btn btn-danger">Đặt hàng</button>
+                  </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-warning mt-2">Khong co san pham nao</div>
+    {% endif %}

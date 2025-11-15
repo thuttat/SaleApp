@@ -1,6 +1,6 @@
-from flask import render_template,request
-
-from eapp import app,dao
+from flask import render_template,request,redirect
+from eapp import app,dao, login
+from flask_login import login_user
 
 
 @app.route('/')
@@ -11,6 +11,18 @@ def index():
                                  page=request.args.get('page'))
     return render_template('index.html', categories=categories,product=products)
 
+@app.route('/login',methods=['post'])
+def login_process():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    user = dao.auth_user(username=username, password=password)
+    if user:
+        login_user(user=user)
+    return redirect('/admin')
+
+@login.user_loader
+def load_user(id):
+    return dao.get_user_by_id(id)
 
 if __name__ == "__main__":
     from eapp import admin
