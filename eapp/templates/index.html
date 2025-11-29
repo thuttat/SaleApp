@@ -10,6 +10,7 @@
       <li class="page-item"><a class="page-link" href="/?page={{i}}">{{i}}</a></li>
         {% endfor %}
     {% endif %}
+
     </ul>
     <div class="row">
         {% for p in product %}
@@ -20,7 +21,7 @@
                     <h4 class="card-title">{{p.name}}</h4>
                     <p class="card-text">{{p.price}}</p>
                     <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                    <button class="btn btn-danger">Đặt hàng</button>
+                    <button class="btn btn-danger" onclick="addToCart({{ p.id }}, {{p.name }})">Đặt hàng</button>
                   </div>
                 </div>
             </div>

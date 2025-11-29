@@ -3,7 +3,7 @@ from eapp import app,dao, login
 from flask_login import login_user, logout_user
 import math
 
-from eapp.dao import count_product
+from eapp.dao import count_product, add_user
 
 
 @app.route('/')
@@ -21,6 +21,19 @@ def login_view():
 @app.route('/register')
 def register_view():
     return render_template('register.html')
+
+@app.route('/register', methods=['post'])
+def register_process():
+    data = request.form
+
+    password = data.get('password')
+    confirm = data.get('confirm')
+    if password != confirm:
+        err_msg = "wrong password"
+        return render_template('register.html',err_msg=err_msg)
+
+    add_user(name = data.get('name'),username=data.get('username'),password=password,avatar=request.files.get('avatar'))
+    return redirect('/login')
 
 @app.route('/logout')
 def logout_process():
